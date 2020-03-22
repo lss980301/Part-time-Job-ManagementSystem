@@ -1,0 +1,21 @@
+package temperatureconverter;
+
+import java.util.Scanner;
+
+public class TemperatureConverter {
+
+	public static void main(String[] args) {
+		double ftemperature;
+		
+		System.out.print ("화씨온도를 입력해주세요! : ");
+		Scanner sc = new Scanner (System.in); 
+		ftemperature = sc.nextDouble ();
+		
+		double ctemperature =  5.0/9.0 *(ftemperature-32);
+		 
+		System.out.print ("입력한 화씨온도를 섭씨온도로 변환하면 \'");
+		System.out.printf ("%.2f",ctemperature);
+		System.out.print ("\' 입니다. ^~^ ");
+	}
+
+}
