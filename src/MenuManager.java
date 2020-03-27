@@ -40,10 +40,10 @@ public class MenuManager{
       int parttimejobID = input.nextInt();
       System.out.print("Part-time job Name : ");
       String parttimejobName = input.next();
-      System.out.print("What Time : ");
+      System.out.print("Form What Time : ");
       String parttimejobTime = input.next();
-      System.out.print("How Longtime : ");
-      String parttimejobLongtime = input.next();
+      System.out.print("How many hours : ");
+      String parttimejobHow = input.next();
    }
 
    public static void deleteParttimejob() {
