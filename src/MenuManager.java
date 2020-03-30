@@ -66,4 +66,8 @@ public class MenuManager{
       String parttimejobID = input.next();
    }
 
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> branch 'master' of https://github.com/lss980301/Part-time-job-ManagementSystem.git
