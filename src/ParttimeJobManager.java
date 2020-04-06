@@ -28,7 +28,7 @@ public class ParttimeJobManager {
 			System.out.println("The parttimejob has not been registered");
 			return;
 		}
-		if (parttimejob.ID.equalsIgnoreCase(parttimejobID)) {
+		if (parttimejob.ID.equalsIgnoreCase(parttimejobID)) {       // 문자열 비교를 위해 equalsIgnoreCase() 를 사용하였습니다!   
 			parttimejob = null;
 			System.out.println("The parttimejob is deleted");
 		}
@@ -37,7 +37,7 @@ public class ParttimeJobManager {
 	public void editParttimejob() {
 		System.out.print("Part-time job ID : ");
 		String parttimejobID = input.next();
-		if (parttimejob.ID.equalsIgnoreCase(parttimejobID)) {
+		if (parttimejob.ID.equalsIgnoreCase(parttimejobID)) {      // 문자열 비교를 위해 equalsIgnoreCase() 를 사용하였습니다!
 			int num= -1;
 			while(num != 6) {
 				System.out.println("** Part-time job Info Edit Menu **");
