@@ -12,7 +12,7 @@ public class MenuManager{
 			System.out.println(" 1. Add Part-time job");
 			System.out.println(" 2. Delete Part-time job");
 			System.out.println(" 3. Edit Part-time job");
-			System.out.println(" 4. View Part-time job");
+			System.out.println(" 4. View Part-time jobs");
 			System.out.println(" 5. Exit");
 			num = input.nextInt();
 			if(num == 1) {
@@ -25,7 +25,7 @@ public class MenuManager{
 				parttimeJobManager.editParttimejob();
 			}
 			else if(num == 4) {
-				parttimeJobManager.viewParttimejob();
+				parttimeJobManager.viewParttimejobs();
 			}
 			else {
 				continue;
