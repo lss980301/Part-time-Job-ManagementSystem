@@ -1,6 +1,9 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import Parttimejob.Clean;
+import Parttimejob.ParttimeJob;
+
 public class ParttimeJobManager {
 	ArrayList<ParttimeJob> parttimejobs = new ArrayList<ParttimeJob>();
 	Scanner input;
@@ -9,18 +12,30 @@ public class ParttimeJobManager {
 	}
 
 	public void addParttimejob() {
-		ParttimeJob parttimejob = new ParttimeJob();
-		System.out.print("Part-time job ID : ");
-		parttimejob.ID =  input.next();
-		System.out.print("Part-time job Name : ");
-		parttimejob.Name = input.next();
-		System.out.print("Form What Time : ");
-		parttimejob.Time = input.nextInt();
-		System.out.print("How many hours : ");
-		parttimejob.Hours = input.nextInt();
-		System.out.print("What's the hourly wage : ");
-		parttimejob.Wage = input.nextInt();
-		parttimejobs.add(parttimejob);
+		int Kind = 0;
+		ParttimeJob parttimejob;
+		while (Kind != 1 && Kind != 2) {
+			System.out.print("1 for Clean");
+			System.out.println(" 2 for Cashier");
+			System.out.print("Select num for Part-time job Kind ");
+			Kind =  input.nextInt();
+			if (Kind == 1) {
+				parttimejob = new ParttimeJob();
+				parttimejob.getUserInput(input);
+				parttimejobs.add(parttimejob);
+				break;
+			}
+			else if (Kind == 2) {
+				parttimejob = new Clean();
+				parttimejob.getUserInput(input);
+				parttimejobs.add(parttimejob);
+				break;
+			}
+			else {
+				System.out.print("Select num for Part-time job Kind Between 1 and 2 ");
+			}
+		}
+
 	}
 
 	public void deleteParttimejob() {
@@ -28,7 +43,7 @@ public class ParttimeJobManager {
 		String parttimejobID = input.next();
 		int index = -1;
 		for(int i = 0; i<parttimejobs.size(); i++) {
-			if (parttimejobs.get(i).ID.equalsIgnoreCase(parttimejobID)) {
+			if (parttimejobs.get(i).getID().equalsIgnoreCase(parttimejobID)) {
 				index = i;
 				break;
 			}
@@ -36,7 +51,6 @@ public class ParttimeJobManager {
 
 		if (index>=0) {
 			parttimejobs.remove(index);
-		ParttimeJob.numParttimeJobsRegisterd--;
 			System.out.println("The parttimejob" + parttimejobID + "is deleted");
 		}
 		else {
@@ -51,7 +65,7 @@ public class ParttimeJobManager {
 		String parttimejobID = input.next();
 		for(int i = 0; i<parttimejobs.size(); i++) {
 			ParttimeJob parttimejob = parttimejobs.get(i);
-			if (parttimejob.ID.equalsIgnoreCase(parttimejobID)) {
+			if (parttimejob.getID().equalsIgnoreCase(parttimejobID)) {
 				int num= -1;
 				while(num != 6) {
 					System.out.println("** Part-time job Info Edit Menu **");
@@ -65,23 +79,28 @@ public class ParttimeJobManager {
 					num = input.nextInt();
 					if(num == 1) {
 						System.out.print("Part-time job ID : ");
-						parttimejob.ID =  input.next();
+						String ID =  input.next();
+						parttimejob.setID(ID);
 					}
 					else if(num == 2) {
 						System.out.print("Part-time job Name : ");
-						parttimejob.Name = input.next();
+						String Name = input.next();
+						parttimejob.setName(Name);
 					}
 					else if(num == 3) {
 						System.out.print("Form What Time : ");
-						parttimejob.Time = input.nextInt();
+						int Time = input.nextInt();
+						parttimejob.setTime(Time);;
 					}
 					else if(num == 4) {
 						System.out.print("How many hours : ");
-						parttimejob.Hours = input.nextInt();
+						int Hours = input.nextInt();
+						parttimejob.setHours(Hours);
 					}
 					else if(num == 5) {
 						System.out.print("What's the hourly wage : ");
-						parttimejob.Wage = input.nextInt();
+						int Wage = input.nextInt();
+						parttimejob.setWage(Wage);
 					}
 					else {
 						continue;
@@ -96,7 +115,7 @@ public class ParttimeJobManager {
 	public void viewParttimejobs() {
 		//		System.out.print("Part-time job ID : ");
 		//		String parttimejobID = input.next();
-		System.out.println("# of registered ParttimeJobs: "+ParttimeJob.numParttimeJobsRegisterd);
+		System.out.println("# of registered ParttimeJobs: " + parttimejobs.size());
 		for(int i = 0; i<parttimejobs.size(); i++) {
 			parttimejobs.get(i).printInfo();
 		}
