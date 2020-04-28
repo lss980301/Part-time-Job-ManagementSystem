@@ -2,7 +2,9 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 import Parttimejob.Clean;
+import Parttimejob.Laborer;
 import Parttimejob.ParttimeJob;
+import Parttimejob.ParttimejobKind;
 
 public class ParttimeJobManager {
 	ArrayList<ParttimeJob> parttimejobs = new ArrayList<ParttimeJob>();
@@ -15,18 +17,25 @@ public class ParttimeJobManager {
 		int Kind = 0;
 		ParttimeJob parttimejob;
 		while (Kind != 1 && Kind != 2) {
-			System.out.print("1 for Clean");
-			System.out.println(" 2 for Cashier");
-			System.out.print("Select num for Part-time job Kind ");
+			System.out.println("1 for Cashier");
+			System.out.println("2 for Clean");
+			System.out.println("3 for Laborer");
+			System.out.println("Select num for Part-time job Kind ");
 			Kind =  input.nextInt();
 			if (Kind == 1) {
-				parttimejob = new ParttimeJob();
+				parttimejob = new ParttimeJob(ParttimejobKind.Cashier);
 				parttimejob.getUserInput(input);
 				parttimejobs.add(parttimejob);
 				break;
 			}
 			else if (Kind == 2) {
-				parttimejob = new Clean();
+				parttimejob = new Clean(ParttimejobKind.Clean);
+				parttimejob.getUserInput(input);
+				parttimejobs.add(parttimejob);
+				break;
+			}
+			else if (Kind == 3) {
+				parttimejob = new Laborer(ParttimejobKind.Laborer);
 				parttimejob.getUserInput(input);
 				parttimejobs.add(parttimejob);
 				break;

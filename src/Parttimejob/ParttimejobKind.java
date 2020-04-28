@@ -1,7 +1,7 @@
 package Parttimejob;
 
 public enum ParttimejobKind {
-	Clean,
 	Cashier,
+	Clean,
 	Laborer
 }

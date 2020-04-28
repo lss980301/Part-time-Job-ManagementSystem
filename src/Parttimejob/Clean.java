@@ -4,6 +4,10 @@ import java.util.Scanner;
 
 public class Clean extends ParttimeJob {
 
+	public Clean(ParttimejobKind Kind) {
+		super(Kind);
+	}
+
 	public void getUserInput(Scanner input) {
 		System.out.print("Part-time job ID : ");
 		String ID =  input.next();
