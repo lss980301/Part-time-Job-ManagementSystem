@@ -3,7 +3,7 @@ package Parttimejob;
 import java.util.Scanner;
 
 public class Laborer extends ParttimeJob {
-
+	
 	public Laborer(ParttimejobKind Kind) {
 		super(Kind);
 	}
@@ -11,26 +11,16 @@ public class Laborer extends ParttimeJob {
 	protected int DayWage;
 
 	public void getUserInput(Scanner input) {
-		System.out.print("Part-time job ID : ");
-		String ID =  input.next();
-		this.setID(ID);
-
-		System.out.print("Part-time job Name : ");
-		String Name = input.next();
-		this.setName(Name);
-
-		System.out.print("Form What Time : ");
-		int Time = input.nextInt();
-		this.setTime(Time);
+		setParttimeID(input);
+		setParttimeName(input);
+		setParttimeTime(input);
 
 		char answer = 'x';
 		while (answer != 'y' && answer != 'Y' && answer != 'n' && answer != 'N') {
 			System.out.print("Is there a set time?? (Y/N)");
 			answer = input.next().charAt(0);
 			if (answer == 'y' || answer == 'Y') {
-				System.out.print("What's the How many hours ? : ");
-				int Hours = input.nextInt();
-				this.setHours(Hours);
+				setParttimeHours(input);
 				break;
 			}
 			else if (answer == 'n' || answer == 'N') {
@@ -62,19 +52,7 @@ public class Laborer extends ParttimeJob {
 	}
 
 	public void printInfo() {
-		String skind = "none";
-		switch(this.Kind) {
-		case Clean:
-			skind = "Clean.";
-			break;
-		case Cashier:
-			skind = "Cashier.";
-			break;	
-		case Laborer:
-			skind = "Laborer.";
-			break;			
-		default:
-		}
-		System.out.println("parttimejobKind: "+ Kind + " parttimejobID: "+ ID + " parttimejobName: "+ Name + " parttimejobTime: "+ Time + " parttimejobHours: "+ Hours + " parttimejobDailyWage: " + Wage);
+		String skind = getKindString();
+		System.out.println("parttimejobKind: "+ skind + " parttimejobID: "+ ID + " parttimejobName: "+ Name + " parttimejobTime: "+ Time + " parttimejobHours: "+ Hours + " parttimejobDailyWage: " + Wage);
 	}
 }

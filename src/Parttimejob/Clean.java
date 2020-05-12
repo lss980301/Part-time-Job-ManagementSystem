@@ -7,24 +7,18 @@ public class Clean extends ParttimeJob {
 	public Clean(ParttimejobKind Kind) {
 		super(Kind);
 	}
+	
+
 
 	public void getUserInput(Scanner input) {
-		System.out.print("Part-time job ID : ");
-		String ID =  input.next();
-		this.setID(ID);
-
-		System.out.print("Part-time job Name : ");
-		String Name = input.next();
-		this.setName(Name);
-
-		System.out.print("Form What Time : ");
-		int Time = input.nextInt();
-		this.setTime(Time);
-
-		System.out.print("How many hours : ");
-		int Hours = input.nextInt();
-		this.setHours(Hours);
-
+		setParttimeID(input);
+		setParttimeName(input);
+		setParttimeTime(input);
+		setParttimeHours(input);
+		setParttimejobWagewithYN(input);
+	}
+	
+	public void setParttimejobWagewithYN(Scanner input) {
 		char answer = 'x';
 		while (answer != 'y' && answer != 'Y' && answer != 'n' && answer != 'N') {
 			System.out.print("Is the minimum hourly wage applied? ");
@@ -34,14 +28,18 @@ public class Clean extends ParttimeJob {
 				break;
 			}
 			else if (answer == 'n' || answer == 'N') {
-				System.out.print("What's the hourly wage : ");
-				int Wage = input.nextInt();
-				this.setWage(Wage);
+				setParttimeWage(input);
 				break;
 			}
 			else {
 			}
 		}
-
 	}
+	
+	public void printInfo() {
+		String skind = getKindString();
+		System.out.println("parttimejobKind: "+ skind + " parttimejobID: "+ ID + " parttimejobName: "+ Name + " parttimejobTime: "+ Time + " parttimejobHours: "+ Hours + " parttimejobWage: " + Wage);
+	}
+	
+	
 }

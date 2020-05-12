@@ -2,7 +2,7 @@ package Parttimejob;
 
 import java.util.Scanner;
 
-public class ParttimeJob {
+public abstract class ParttimeJob implements ParttimeJobinput{
 	protected ParttimejobKind Kind = ParttimejobKind.Clean;
 	protected String ID;
 	protected String Name;
@@ -79,43 +79,41 @@ public class ParttimeJob {
 		Wage = wage;
 	}
 
-	public void printInfo() {
-		String skind = "none";
-		switch(this.Kind) {
-		case Clean:
-			skind = "Clean.";
-			break;
-		case Cashier:
-			skind = "Cashier.";
-			break;	
-		case Laborer:
-			skind = "Laborer.";
-			break;			
-		default:
-		}
-		System.out.println("parttimejobKind: "+ Kind + " parttimejobID: "+ ID + " parttimejobName: "+ Name + " parttimejobTime: "+ Time + " parttimejobHours: "+ Hours + " parttimejobWage: " + Wage);
-	}
+	public abstract void printInfo();
 
-	public void getUserInput(Scanner input) {
+	public void setParttimeID(Scanner input) {
 		System.out.print("Part-time job ID : ");
 		String ID =  input.next();
 		this.setID(ID);
-
+	}
+	
+	public void setParttimeName(Scanner input) {
 		System.out.print("Part-time job Name : ");
 		String Name = input.next();
 		this.setName(Name);
+	}
 
+	public void setParttimeTime(Scanner input) {
 		System.out.print("Form What Time : ");
 		int Time = input.nextInt();
 		this.setTime(Time);
+	}
 
+	public void setParttimeHours(Scanner input) {
 		System.out.print("How many hours : ");
 		int Hours = input.nextInt();
 		this.setHours(Hours);
 
+	}
+
+	public void setParttimeWage(Scanner input) {
 		System.out.print("What's the hourly wage : ");
 		int Wage = input.nextInt();
 		this.setWage(Wage);
 	}
 
+	public String getKindString() {
+		String skind = getKindString();
+		return skind;
+	}
 }
