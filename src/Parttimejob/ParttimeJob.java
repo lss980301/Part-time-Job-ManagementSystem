@@ -12,7 +12,7 @@ public abstract class ParttimeJob implements ParttimeJobinput{
 
 	public ParttimeJob() {
 	}
-	
+
 	public ParttimeJob(ParttimejobKind Kind) {
 		this.Kind = Kind;
 	}
@@ -86,7 +86,7 @@ public abstract class ParttimeJob implements ParttimeJobinput{
 		String ID =  input.next();
 		this.setID(ID);
 	}
-	
+
 	public void setParttimeName(Scanner input) {
 		System.out.print("Part-time job Name : ");
 		String Name = input.next();
@@ -113,7 +113,19 @@ public abstract class ParttimeJob implements ParttimeJobinput{
 	}
 
 	public String getKindString() {
-		String skind = getKindString();
+		String skind = "none";
+		switch(this.Kind) {
+		case Clean:
+			skind = "Clean";
+			break;
+		case Laborer:
+			skind = "Laborer";
+			break;
+		case Cashier:
+			skind = "Cashier";
+			break;
+		default:
+		}
 		return skind;
 	}
 }
