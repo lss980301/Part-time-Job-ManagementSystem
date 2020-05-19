@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import Parttimejob.Cashier;
@@ -18,32 +19,41 @@ public class ParttimeJobManager {
 	public void addParttimejob() {
 		int Kind = 0;
 		ParttimeJobinput parttimejobinput;
-		while (Kind != 1 && Kind != 2) {
-			System.out.println("1 for Cashier");
-			System.out.println("2 for Clean");
-			System.out.println("3 for Laborer");
-			System.out.println("Select num for Part-time job Kind ");
-			Kind =  input.nextInt();
-			if (Kind == 1) {
-				parttimejobinput = new Cashier(ParttimejobKind.Cashier);
-				parttimejobinput.getUserInput(input);
-				parttimejobs.add(parttimejobinput);
-				break;
+		while (Kind < 1 || Kind > 3) {
+			try {	
+				System.out.println("- Select num for Part-time job Kind ");
+				System.out.println("1 for Cashier");
+				System.out.println("2 for Clean");
+				System.out.println("3 for Laborer");
+				Kind =  input.nextInt();
+				if (Kind == 1) {
+					parttimejobinput = new Cashier(ParttimejobKind.Cashier);
+					parttimejobinput.getUserInput(input);
+					parttimejobs.add(parttimejobinput);
+					break;
+				}
+				else if (Kind == 2) {
+					parttimejobinput = new Clean(ParttimejobKind.Clean);
+					parttimejobinput.getUserInput(input);
+					parttimejobs.add(parttimejobinput);
+					break;
+				}
+				else if (Kind == 3) {
+					parttimejobinput = new Laborer(ParttimejobKind.Laborer);
+					parttimejobinput.getUserInput(input);
+					parttimejobs.add(parttimejobinput);
+					break;
+				}
+				else {
+					System.out.print("Select num for Part-time job Kind Between 1 and 2 ");
+				}
 			}
-			else if (Kind == 2) {
-				parttimejobinput = new Clean(ParttimejobKind.Clean);
-				parttimejobinput.getUserInput(input);
-				parttimejobs.add(parttimejobinput);
-				break;
-			}
-			else if (Kind == 3) {
-				parttimejobinput = new Laborer(ParttimejobKind.Laborer);
-				parttimejobinput.getUserInput(input);
-				parttimejobs.add(parttimejobinput);
-				break;
-			}
-			else {
-				System.out.print("Select num for Part-time job Kind Between 1 and 2 ");
+			catch (InputMismatchException e) {
+				System.out.println("Please put an integer between 1-3!");
+				if (input.hasNext()) {
+					input.next();
+				}
+				Kind = -1;
 			}
 		}
 
@@ -53,10 +63,10 @@ public class ParttimeJobManager {
 		System.out.print("Part-time job ID : ");
 		String parttimejobID = input.next();
 		int index = findIndex(parttimejobID);
-		
+
 		removeParttimejob(index, parttimejobID);
 	}
-	
+
 	public int findIndex(String parttimejobID) {
 		int index = -1;
 		for(int i = 0; i<parttimejobs.size(); i++) {
@@ -67,7 +77,7 @@ public class ParttimeJobManager {
 		}
 		return index;
 	}
-	
+
 	public int removeParttimejob(int index, String parttimejobID) {
 		if (index>=0) {
 			parttimejobs.remove(index);
@@ -123,7 +133,7 @@ public class ParttimeJobManager {
 		}
 	}
 
-	
+
 	public void showEditMenu() {
 		System.out.println("** Part-time job Info Edit Menu **");
 		System.out.println(" - Select one number between 1-6 - ");

@@ -2,6 +2,8 @@ package Parttimejob;
 
 import java.util.Scanner;
 
+import Exceptions.DateFormatException;
+
 public abstract class ParttimeJob implements ParttimeJobinput{
 	protected ParttimejobKind Kind = ParttimejobKind.Clean;
 	protected String ID;
@@ -36,15 +38,18 @@ public abstract class ParttimeJob implements ParttimeJobinput{
 	}
 
 	public void setKind(ParttimejobKind kind) {
-		Kind = kind;
+		this.Kind = kind;
 	}
 
 	public String getID() {
 		return ID;
 	}
 
-	public void setID(String iD) {
-		ID = iD;
+	public void setID(String ID) throws DateFormatException {
+		if (!ID.contains("월") || !ID.contains("일")) {
+			throw new DateFormatException();
+		}
+		this.ID = ID;
 	}
 
 	public String getName() {
@@ -52,7 +57,7 @@ public abstract class ParttimeJob implements ParttimeJobinput{
 	}
 
 	public void setName(String name) {
-		Name = name;
+		this.Name = name;
 	}
 
 	public int getTime() {
@@ -60,7 +65,7 @@ public abstract class ParttimeJob implements ParttimeJobinput{
 	}
 
 	public void setTime(int time) {
-		Time = time;
+		this.Time = time;
 	}
 
 	public int getHours() {
@@ -68,7 +73,7 @@ public abstract class ParttimeJob implements ParttimeJobinput{
 	}
 
 	public void setHours(int hours) {
-		Hours = hours;
+		this.Hours = hours;
 	}
 
 	public int getWage() {
@@ -76,15 +81,23 @@ public abstract class ParttimeJob implements ParttimeJobinput{
 	}
 
 	public void setWage(int wage) {
-		Wage = wage;
+		this.Wage = wage;
 	}
 
 	public abstract void printInfo();
 
 	public void setParttimeID(Scanner input) {
-		System.out.print("Part-time job ID : ");
-		String ID =  input.next();
-		this.setID(ID);
+		String ID = "";
+		while (!ID.contains("월") || !ID.contains("일")) {
+			System.out.print("Part-time job ID : ");
+			ID =  input.next();
+			try {
+				this.setID(ID);
+			} catch (DateFormatException e) {
+				System.out.println("Incorrect ID(Date) Format. put the ID that contains 월,일");
+			}	
+		}
+
 	}
 
 	public void setParttimeName(Scanner input) {
@@ -103,7 +116,6 @@ public abstract class ParttimeJob implements ParttimeJobinput{
 		System.out.print("How many hours : ");
 		int Hours = input.nextInt();
 		this.setHours(Hours);
-
 	}
 
 	public void setParttimeWage(Scanner input) {

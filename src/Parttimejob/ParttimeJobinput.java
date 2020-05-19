@@ -2,11 +2,13 @@ package Parttimejob;
 
 import java.util.Scanner;
 
+import Exceptions.DateFormatException;
+
 public interface ParttimeJobinput {
 	
 	public String getID();
 	
-	public void setID(String iD);
+	public void setID(String iD) throws DateFormatException;
 	
 	public void setName(String name);
 	
