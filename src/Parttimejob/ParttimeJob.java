@@ -1,10 +1,15 @@
 package Parttimejob;
 
+import java.io.Serializable;
 import java.util.Scanner;
 
 import Exceptions.DateFormatException;
 
-public abstract class ParttimeJob implements ParttimeJobinput{
+public abstract class ParttimeJob implements ParttimeJobinput, Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 2331189212635848111L;
 	protected ParttimejobKind Kind = ParttimejobKind.Clean;
 	protected String ID;
 	protected String Name;

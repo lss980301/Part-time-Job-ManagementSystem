@@ -1,3 +1,4 @@
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -5,13 +6,17 @@ import java.util.Scanner;
 import Parttimejob.Cashier;
 import Parttimejob.Clean;
 import Parttimejob.Laborer;
-import Parttimejob.ParttimeJob;
 import Parttimejob.ParttimeJobinput;
 import Parttimejob.ParttimejobKind;
 
-public class ParttimeJobManager {
+public class ParttimeJobManager implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 5107662770876671336L;
+	
 	ArrayList<ParttimeJobinput> parttimejobs = new ArrayList<ParttimeJobinput>();
-	Scanner input;
+	transient Scanner input;
 	ParttimeJobManager(Scanner input){
 		this.input = input;
 	}
