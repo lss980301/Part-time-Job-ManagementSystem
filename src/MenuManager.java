@@ -19,6 +19,9 @@ public class MenuManager{
 		if (parttimeJobManager == null) {
 			parttimeJobManager = new ParttimeJobManager(input);
 		}
+		else {
+			parttimeJobManager.setScanner(input);
+		}
 
 		selectMenu(input, parttimeJobManager);
 		putObject(parttimeJobManager, "parttimeJobManager.ser");

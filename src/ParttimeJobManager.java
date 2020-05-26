@@ -20,6 +20,10 @@ public class ParttimeJobManager implements Serializable {
 	ParttimeJobManager(Scanner input){
 		this.input = input;
 	}
+	
+	public void setScanner(Scanner input) {
+        this.input = input;
+    }
 
 	public void addParttimejob() {
 		int Kind = 0;
