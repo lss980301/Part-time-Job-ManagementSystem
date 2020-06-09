@@ -12,8 +12,6 @@ public class MenuManager{
 	static EventLogger logger = new EventLogger("logP.txt");
 
 	public static void main(String[] args) {
-
-
 		Scanner input = new Scanner(System.in);
 		ParttimeJobManager parttimeJobManager = getObject("parttimeJobManager.ser");
 		if (parttimeJobManager == null) {
@@ -22,7 +20,6 @@ public class MenuManager{
 		else {
 			parttimeJobManager.setScanner(input);
 		}
-
 		selectMenu(input, parttimeJobManager);
 		putObject(parttimeJobManager, "parttimeJobManager.ser");
 	}

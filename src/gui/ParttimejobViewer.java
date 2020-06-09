@@ -3,9 +3,13 @@ package gui;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 
-public class ParttimejobViewer extends JFrame {
+public class ParttimejobViewer extends JPanel {
 
-	public ParttimejobViewer() {
+	WindowFrame frame;
+	
+	public ParttimejobViewer(WindowFrame frame) {
+		this.frame = frame;
+		
 		DefaultTableModel model = new DefaultTableModel();
 		model.addColumn("ID");
 		model.addColumn("Name");
@@ -17,9 +21,6 @@ public class ParttimejobViewer extends JFrame {
 		JScrollPane sp = new JScrollPane(table); 
 		
 		this.add(sp);
-		this.setSize(400, 300);
-		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		this.setVisible(true);
 	}
 	
 }
