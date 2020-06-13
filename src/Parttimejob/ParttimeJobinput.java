@@ -12,11 +12,19 @@ public interface ParttimeJobinput {
 	
 	public void setName(String name);
 	
+	public String getName();
+	
 	public void setTime(int time);
+	
+	public int getTime();
 	
 	public void setHours(int hours);
 	
+	public int getHours();
+	
 	public void setWage(int wage);
+	
+	public int getWage();
 	
 	public void getUserInput(Scanner input);
 	

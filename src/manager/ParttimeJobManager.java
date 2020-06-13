@@ -1,3 +1,5 @@
+package manager;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
@@ -6,6 +8,7 @@ import java.util.Scanner;
 import Parttimejob.Cashier;
 import Parttimejob.Clean;
 import Parttimejob.Laborer;
+import Parttimejob.ParttimeJob;
 import Parttimejob.ParttimeJobinput;
 import Parttimejob.ParttimejobKind;
 
@@ -142,7 +145,14 @@ public class ParttimeJobManager implements Serializable {
 		}
 	}
 
-
+	public int size() {
+		return parttimejobs.size();
+	}
+	
+	public ParttimeJobinput get(int index) {
+		return (ParttimeJob) parttimejobs.get(index);
+	}
+	
 	public void showEditMenu() {
 		System.out.println("** Part-time job Info Edit Menu **");
 		System.out.println(" - Select one number between 1-6 - ");
